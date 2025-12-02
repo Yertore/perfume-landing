@@ -148,7 +148,6 @@ const products = [
           <nav className="hidden md:flex items-center gap-6 text-sm text-gray-700">
             <a href="#catalog" className="hover:text-gray-900">Каталог</a>
             <a href="#about" className="hover:text-gray-900">О бренде</a>
-            <a href="#gallery" className="hover:text-gray-900">Галерея</a>
             <a href="#contact" className="hover:text-gray-900">Контакты</a>
           </nav>
 
