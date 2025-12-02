@@ -338,7 +338,7 @@ const products = [
               <div className="flex gap-3 items-center">
                 <svg className="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7-5 7 5v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
                 <div>
-                  <div className="font-semibold">office@aura.kz</div>
+                  <div className="font-semibold">office@hosh.kz</div>
                   <div className="text-xs text-gray-400">Почта для вопросов</div>
                 </div>
               </div>
