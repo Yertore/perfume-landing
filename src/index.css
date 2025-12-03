@@ -2,17 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-@keyframes slideDown {
-  from {
+@keyframes menuFadeSlide {
+  0% {
     opacity: 0;
-    transform: translateY(-10%);
+    transform: translateY(-12px);
   }
-  to {
+  40% {
     opacity: 1;
+  }
+  100% {
     transform: translateY(0);
   }
 }
 
-.animate-slideDown {
-  animation: slideDown 0.25s ease-out;
+.animate-menu {
+  animation: menuFadeSlide 0.28s ease-out forwards;
 }

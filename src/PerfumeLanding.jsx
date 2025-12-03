@@ -183,7 +183,7 @@ const products = [
   <div className="fixed top-0 left-0 right-0 z-[99999] bg-white shadow-md rounded-b-2xl">
 
     {/* MENU WRAPPER */}
-    <div className="p-4 flex flex-col gap-2">
+    <div className="p-4 flex flex-col gap-2 animate-menu">
 
       {/* Close button */}
       <button
