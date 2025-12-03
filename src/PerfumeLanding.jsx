@@ -168,25 +168,26 @@ const products = [
   <div className="max-w-8xl mx-auto px-6 md:px-8 lg:px-12 py-12 md:py-20 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
     <div className="space-y-6">
       <span className="inline-block px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-medium">Новая коллекция 2025</span>
-      <h2 className="text-4xl md:text-5xl font-extrabold leading-tight">Соблазнительные ароматы. <br className="hidden sm:inline"/>Изысканная косметика.</h2>
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight">Соблазнительные ароматы. <br className="hidden sm:inline"/>Изысканная косметика.</h2>
       <p className="text-gray-600 max-w-xl">Коллекция, создающая настроение — ноты розы, сандала и янтаря. Упаковка премиум-класса, ручная отделка и утончённый дизайн.</p>
       <div className="flex items-center gap-4">
         <a href="#catalog" className="inline-flex items-center gap-2 bg-gray-900 text-white px-5 py-3 rounded-full font-medium shadow hover:opacity-95">Посмотреть каталог</a>
         <a href="#about" className="text-sm text-gray-700 hover:underline">Узнать больше</a>
       </div>
-      <div className="mt-6 flex gap-4">
+      <div className="mt-6 flex flex-wrap gap-4 sm:gap-6">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-md bg-white shadow flex items-center justify-center">✨</div>
+          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-md bg-white shadow flex items-center justify-center">✨</div>
           <div>
-            <div className="text-sm font-semibold">Бесплатная доставка</div>
-            <div className="text-xs text-gray-500">от 20 000 тг</div>
+            <div className="text-sm sm:text-base font-semibold">Бесплатная доставка</div>
+            <div className="text-xs sm:text-sm text-gray-500">от 20 000 тг</div>
           </div>
         </div>
+
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-md bg-white shadow flex items-center justify-center">🕊️</div>
+          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-md bg-white shadow flex items-center justify-center">🕊️</div>
           <div>
-            <div className="text-sm font-semibold">Натуральные ноты</div>
-            <div className="text-xs text-gray-500">Без агрессивной химии</div>
+            <div className="text-sm sm:text-base font-semibold">Натуральные ноты</div>
+            <div className="text-xs sm:text-sm text-gray-500">Без агрессивной химии</div>
           </div>
         </div>
       </div>
@@ -202,42 +203,64 @@ const products = [
 
 {/* HITS */}
       <section className="max-w-8xl mx-auto px-6 md:px-8 lg:px-12 py-24">
-        <h3 className="text-4xl font-extrabold text-center mb-14 tracking-tight">
-          Хиты продаж
-        </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
-          {[
-            {
-              name: products[0].name,
-              img: products[0].img
-            },
-            {
-              name: products[1].name,
-              img: products[1].img
-            },
-            {
-              name: products[2].name,
-              img: products[2].img
-            }
-          ].map((item, i) => (
-            <div
-              key={i}
-              onClick={() => setModalItem(i)}
-              className="cursor-pointer group relative rounded-3xl overflow-hidden shadow-lg flex items-center justify-center"
-            >
-              <img
-                src={item.img}
-                className="h-[380px] w-auto object-contain transition-all duration-700 group-hover:scale-110"
-              />
-              <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/70 to-transparent text-white flex items-end justify-center">
-                <h4 className="text-2xl font-bold tracking-tight drop-shadow-lg">
-                  {item.name}
-                </h4>
-              </div>
-            </div>
-          ))}
+        <h3
+        className="
+          text-2xl        /* mobile */
+          sm:text-3xl     /* tablets 640+ */
+          md:text-4xl     /* desktop 768+ */
+          lg:text-5xl     /* large screens 1024+ */
+          font-extrabold text-center mb-14 tracking-tight
+        "
+      >
+        Хиты продаж
+      </h3>
+
+  <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
+    {[
+      {
+        name: products[0].name,
+        img: products[0].img
+      },
+      {
+        name: products[1].name,
+        img: products[1].img
+      },
+      {
+        name: products[2].name,
+        img: products[2].img
+      }
+    ].map((item, i) => (
+      <div
+        key={i}
+        onClick={() => setModalItem(i)}
+        className="cursor-pointer group relative rounded-3xl overflow-hidden shadow-lg flex items-center justify-center"
+      >
+        <img
+          src={item.img}
+          className="
+            w-auto 
+            h-56        /* mobile */
+            sm:h-64     /* tablets 640+ */
+            md:h-72     /* 768+ */
+            lg:h-80     /* 1024+ */
+            object-contain 
+            transition-all duration-700 group-hover:scale-110
+          "
+        />
+
+        <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/70 to-transparent text-white flex items-end justify-center">
+          <h4 className=" text-lg        /* mobile */
+                          sm:text-xl     /* tablets 640+ */
+                          md:text-2xl    /* 768+ */
+                          lg:text-3xl    /* 1024+ */
+                          font-bold tracking-tight drop-shadow-lg" >
+            {item.name}
+          </h4>
         </div>
-      </section>
+      </div>
+    ))}
+  </div>
+</section>
 
 {/* CATALOG / PRODUCTS */}
       <section id="catalog" className="max-w-8xl mx-auto px-6 md:px-8 lg:px-12 py-20">
@@ -246,17 +269,80 @@ const products = [
           <p className="text-gray-600">Выберите аромат для любого настроения</p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-5 gap-8">
+        <div className=" grid grid-cols-2 
+                        sm:grid-cols-3 
+                        md:grid-cols-3 
+                        lg:grid-cols-4 
+                        xl:grid-cols-5 
+                        gap-8
+                      ">
           {Array.from({ length: 20 }).slice(0, showAll ? 20 : 10).map((_, i) => (
-            <article key={i} onClick={() => setModalItem(i)} className="bg-white rounded-2xl p-6 shadow hover:shadow-lg transition-shadow cursor-pointer">
-              <div className="w-full h-48 rounded-xl overflow-hidden mb-4 bg-white flex items-center justify-center">
-                <img alt={`product-${i}`} src={products[i].img} className="max-h-48 w-auto object-contain" />
+            <article
+              key={i}
+              onClick={() => setModalItem(i)}
+              className="
+                bg-white rounded-2xl 
+                p-3 sm:p-4 md:p-4 
+                shadow hover:shadow-lg transition-shadow cursor-pointer 
+                flex flex-col
+              "
+            >
+              {/* IMAGE */}
+              <div className="
+                  w-full 
+                  h-32 sm:h-36 md:h-40 lg:h-48 
+                  rounded-xl overflow-hidden 
+                  mb-3 sm:mb-4 
+                  bg-white flex items-center justify-center
+              ">
+                <img
+                  alt={`product-${i}`}
+                  src={products[i].img}
+                  className="
+                    max-h-32 sm:max-h-36 md:max-h-40 lg:max-h-48 
+                    w-auto object-contain
+                  "
+                />
               </div>
-              <h4 className="font-semibold">{products[i].name}</h4>
-              <p className="text-sm text-gray-500 mt-1">50ml · Eau de Parfum</p>
-              <div className="mt-4 flex items-center justify-between">
-                <div className="text-lg font-bold">{products[i].price} ₸</div>
-                <a href="#contact" className="text-sm font-semibold px-4 py-2 rounded-full bg-gradient-to-br from-pink-300 to-amber-200 text-gray-900 shadow hover:opacity-90 transition">Заказать</a>
+
+              {/* TITLE */}
+              <h4 className="font-semibold text-xs sm:text-sm md:text-base text-center">
+                {products[i].name}
+              </h4>
+
+              {/* SUBTEXT */}
+              <p className="text-[10px] sm:text-xs md:text-sm text-gray-500 mt-1 text-center">
+                50ml · Eau de Parfum
+              </p>
+
+              {/* PUSH CONTENT DOWN */}
+              <div className="flex-1"></div>
+
+              {/* PRICE + BUTTON */}
+              <div className="
+                mt-3 sm:mt-4 
+                flex flex-col sm:flex-row md:flex-col lg:flex-row 
+                items-center justify-between 
+                gap-2
+              ">
+                <div className="text-sm sm:text-base md:text-lg font-bold text-center w-full sm:w-auto">
+                  {products[i].price} ₸
+                </div>
+
+                <a
+                  href="#contact"
+                  className="
+                    text-[10px] sm:text-xs md:text-sm 
+                    font-semibold 
+                    px-3 py-2 
+                    w-full sm:w-auto text-center 
+                    rounded-full 
+                    bg-gradient-to-br from-pink-300 to-amber-200 text-gray-900 
+                    shadow hover:opacity-90 transition
+                  "
+                >
+                  Заказать
+                </a>
               </div>
             </article>
           ))}
