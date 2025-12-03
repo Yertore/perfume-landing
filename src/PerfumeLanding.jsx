@@ -73,7 +73,7 @@ function HeroCarousel() {
       {/* Gradient Overlay */}
       <div className="absolute inset-0 pointer-events-none">
         {/* glossy highlight */}
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/20 via-white/5 to-transparent mix-blend-overlay"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/20 via-white/5 to-transparent"></div>
 
         {/* soft glow */}
         <div className="absolute inset-0 blur-3xl bg-white/10"></div>
@@ -103,6 +103,7 @@ function HeroCarousel() {
 
 export default function PerfumeLanding() {
   const [modalItem, setModalItem] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
   
 const products = [
      {id: 1, img: CHANEL_Allure, name: "CHANEL Allure", price: 40000, top: false},
@@ -132,36 +133,105 @@ const products = [
       {/* NAV */}
       <header className="bg-white/60 backdrop-blur-sm sticky top-0 z-40">
         <div className="max-w-8xl mx-auto px-6 md:px-8 lg:px-12 py-4 flex items-center justify-between">
+
+          {/* MOBILE MENU STATE */}
+          {/** add this: */}
+          {/** 👇 переменная меню */}
+          {/* Эта строка должна быть в начале компонента:
+              const [menuOpen, setMenuOpen] = useState(false);
+          */}
+
+          {/* LEFT: LOGO + TITLE */}
           <div className="flex items-center gap-4">
             <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-pink-300 to-amber-200 flex items-center justify-center shadow">
-              <svg viewBox="0 0 24 24" className="w-6 h-6 text-white" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 3v18" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M3 12h18" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+              <svg viewBox="0 0 24 24" className="w-6 h-6 text-white" fill="none">
+                <path d="M12 3v18" stroke="currentColor" strokeWidth="1.2" />
+                <path d="M3 12h18" stroke="currentColor" strokeWidth="1.2" />
               </svg>
             </div>
+
             <div>
-              <h1 className="text-lg font-semibold">HOSH | парфюмерия</h1>
+              <h1 className="text-base sm:text-lg font-semibold">HOSH | парфюмерия</h1>
               <p className="text-xs text-gray-500 -mt-1">Красивая косметика и благовония</p>
             </div>
           </div>
 
-          <nav className="hidden md:flex items-center gap-6 text-sm text-gray-700">
+          {/* DESKTOP NAV */}
+          <nav className="hidden md:flex items-center gap-6 text-base lg:text-sm text-gray-700">
             <a href="#catalog" className="hover:text-gray-900">Каталог</a>
             <a href="#about" className="hover:text-gray-900">О бренде</a>
             <a href="#contact" className="hover:text-gray-900">Контакты</a>
           </nav>
 
+          {/* DESKTOP BUTTON */}
           <div className="hidden md:flex items-center gap-3">
-            <button className="text-sm px-4 py-2 rounded-full border border-gray-200 hover:shadow">Связаться</button>
+            <button className="text-sm px-4 py-2 rounded-full border border-gray-200 hover:shadow">
+              Связаться
+            </button>
           </div>
 
-          <button className="md:hidden p-2">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+          {/* MOBILE MENU BUTTON */}
+          <button className="md:hidden p-2" onClick={() => setMenuOpen(true)}>
+            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                    d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
         </div>
       </header>
+      {menuOpen && (
+  <div className="fixed top-0 left-0 right-0 z-[99999] bg-white shadow-md rounded-b-2xl">
+
+    {/* MENU WRAPPER */}
+    <div className="p-4 flex flex-col gap-2">
+
+      {/* Close button */}
+      <button
+        className="ml-auto p-2 rounded-full hover:bg-gray-100 transition"
+        onClick={() => setMenuOpen(false)}
+      >
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      {/* Menu links */}
+      <a
+        href="#catalog"
+        className="text-lg font-medium py-2 px-2 hover:bg-gray-100 rounded-lg"
+        onClick={() => setMenuOpen(false)}
+      >
+        Каталог
+      </a>
+
+      <a
+        href="#about"
+        className="text-lg font-medium py-2 px-2 hover:bg-gray-100 rounded-lg"
+        onClick={() => setMenuOpen(false)}
+      >
+        О бренде
+      </a>
+
+      <a
+        href="#contact"
+        className="text-lg font-medium py-2 px-2 hover:bg-gray-100 rounded-lg"
+        onClick={() => setMenuOpen(false)}
+      >
+        Контакты
+      </a>
+
+      {/* Button same style as links */}
+      <button
+        className="py-2 px-2 rounded-lg font-medium bg-gray-900 text-white hover:bg-gray-800 transition"
+        onClick={() => setMenuOpen(false)}
+      >
+        Связаться
+      </button>
+    </div>
+  </div>
+)}
+
 
       {/* HERO */}
       <section className="relative overflow-hidden">
