@@ -151,7 +151,7 @@ const products = [
             </div>
 
             <div>
-              <h1 className="text-base sm:text-lg font-semibold">HOSH | парфюмерия</h1>
+              <h1 className="text-base sm:text-lg font-semibold">BEAUTYCOSMETICS | парфюмерия</h1>
               <p className="text-xs text-gray-500 -mt-1">Красивая косметика и благовония</p>
             </div>
           </div>
@@ -493,7 +493,7 @@ const products = [
               <div className="flex gap-3 items-center">
                 <svg className="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7-5 7 5v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
                 <div>
-                  <div className="font-semibold">office@hosh.kz</div>
+                  <div className="font-semibold">bekir.zehay@gmail.com</div>
                   <div className="text-xs text-gray-400">Почта для вопросов</div>
                 </div>
               </div>
@@ -501,7 +501,7 @@ const products = [
               <div className="flex gap-3 items-center">
                 <svg className="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5h12M9 3v2m6 4l4 4-4 4"/></svg>
                 <div>
-                  <div className="font-semibold">+7 (700) 000-00-00</div>
+                  <div className="font-semibold">+7 (707) 255-79-63</div>
                   <div className="text-xs text-gray-400">Рабочие часы: 10:00 — 19:00</div>
                 </div>
               </div>
@@ -534,7 +534,7 @@ const products = [
       {/* FOOTER */}
       <footer className="bg-white py-8">
         <div className="max-w-8xl mx-auto px-6 md:px-8 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="text-sm text-gray-700">© {new Date().getFullYear()} HOSH. Все права защищены.</div>
+          <div className="text-sm text-gray-700">© {new Date().getFullYear()} BEAUTYCOSMETICS. Все права защищены.</div>
 
           <div className="flex items-center gap-4 text-sm text-gray-600">
             <a href="#" aria-label="instagram" className="hover:text-gray-900">Instagram</a>
