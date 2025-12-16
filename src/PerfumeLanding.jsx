@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CHANEL_Allure from './images/chanel_allure.jpg';
 import CHANEL_Chance_Eau_Tendre from './images/chanel_chance.jpg';
 import CHANEL_Coco_Mademoiselle from './images/chanel_coco_mademoiselle.jpg';
@@ -131,6 +131,19 @@ export default function PerfumeLanding() {
 
   const [privacyOpen, setPrivacyOpen] = useState(false);
   const [deliveryOpen, setDeliveryOpen] = useState(false);
+
+  useEffect(() => {
+    if (modalItem !== null || orderProduct || refundOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [modalItem, orderProduct, refundOpen]);
+
 
   const products = [
     { id: 1, img: CHANEL_Allure, name: "CHANEL Allure", price: 40000, top: false },
@@ -575,7 +588,20 @@ export default function PerfumeLanding() {
 
         {modalItem !== null && (
           <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50">
-            <div className="bg-white rounded-2xl w-[95%] max-w-xl p-8 relative shadow-xl animate-fadeIn">
+            <div
+                className="
+                  bg-white
+                  rounded-2xl
+                  w-[95%]
+                  max-w-xl
+                  max-h-[90vh]
+                  overflow-y-auto
+                  p-6
+                  relative
+                  shadow-xl
+                  animate-fadeIn
+                "
+              >
               <button onClick={() => setModalItem(null)} className="absolute top-3 right-3 w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-600 text-xl">×</button>
 
               <img src={products[modalItem].img} className="w-full max-h-[380px] object-contain rounded-xl mb-6" />
@@ -589,24 +615,46 @@ export default function PerfumeLanding() {
                 <span className="px-3 py-1 rounded-full bg-purple-100 text-purple-700 text-xs font-medium">База: Амбра</span>
               </div>
               <div className="text-2xl font-bold mb-4">Цена: {products[modalItem].price} ₸</div>
-              <button
-                onClick={() => {
-                  setOrderProduct(products[modalItem]);
-                  setOrderQty(1);
-                  setModalItem(null);
-                }}
-                className="w-full mt-4 py-4 rounded-full bg-gradient-to-br from-pink-300 to-amber-200 text-gray-900 font-semibold shadow-lg hover:opacity-90 transition text-lg"
-              >
-                Оформить заказ
-              </button>
-
+              <div className="sticky bottom-0 pt-3">
+                <button
+                  onClick={() => {
+                    setOrderProduct(products[modalItem]);
+                    setOrderQty(1);
+                    setModalItem(null);
+                  }}
+                  className="
+                    w-full
+                    py-3 sm:py-4
+                    text-base sm:text-lg
+                    rounded-full
+                    bg-gradient-to-br from-pink-300 to-amber-200
+                    text-gray-900
+                    font-semibold
+                    shadow
+                    hover:opacity-90
+                    transition
+                  "
+                >
+                  Оформить заказ
+                </button>
+              </div>
             </div>
           </div>
         )}
 
         {orderProduct && (
           <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50">
-            <div className="bg-white rounded-2xl w-[95%] max-w-md p-6 relative shadow-xl">
+            <div className="
+                          bg-white 
+                          rounded-2xl 
+                          w-[95%] 
+                          max-w-md 
+                          max-h-[90vh] 
+                          overflow-y-auto 
+                          p-6 
+                          relative 
+                          shadow-xl
+                        ">
 
               {/* Close */}
               <button
@@ -750,20 +798,6 @@ export default function PerfumeLanding() {
                   )}
                 </div>
 
-                {/* КНОПКА */}
-                <button
-                  disabled={
-                    !agree || 
-                    !customerName || 
-                    !customerPhone || 
-                    !isValidKZPhone(customerPhone)
-                  }
-                  onClick={sendToWhatsApp}
-                  className="w-full py-3 rounded-full bg-gray-900 text-white font-semibold hover:bg-gray-800 transition disabled:opacity-50"
-                >
-                  Оформить заказ
-                </button>
-
                 <div className="mt-4 text-center space-y-2">
                   <p className="text-sm text-gray-600">
                     Оплата через <b>Kaspi Pay</b>
@@ -780,6 +814,32 @@ export default function PerfumeLanding() {
                   </p>
                 </div>
 
+                {/* КНОПКА */}
+                <div className="sticky bottom-0 pt-3">
+                  <button
+                    disabled={
+                      !agree || 
+                      !customerName || 
+                      !customerPhone || 
+                      !isValidKZPhone(customerPhone)
+                    }
+                    onClick={sendToWhatsApp}
+                    className="
+                      w-full
+                      py-3 sm:py-4
+                      text-base sm:text-lg
+                      rounded-full
+                      bg-gradient-to-br from-pink-300 to-amber-200
+                      text-gray-900
+                      font-semibold
+                      shadow
+                      hover:opacity-90
+                      transition
+                    "
+                  >
+                    Оформить заказ
+                  </button>
+                </div>
               </div>
 
             </div>
@@ -788,7 +848,17 @@ export default function PerfumeLanding() {
 
         {refundOpen && (
           <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50">
-            <div className="bg-white rounded-2xl w-[95%] max-w-md p-6 relative shadow-xl">
+            <div className="
+                          bg-white 
+                          rounded-2xl 
+                          w-[95%] 
+                          max-w-md 
+                          max-h-[90vh] 
+                          overflow-y-auto 
+                          p-6 
+                          relative 
+                          shadow-xl
+                        ">
 
               {/* CLOSE */}
               <button
@@ -872,23 +942,25 @@ export default function PerfumeLanding() {
                   </a>
                 </label>
 
-                <button
-                  disabled={
-                    !refundAgree ||
-                    !refundName ||
-                    !refundReason ||
-                    !isValidKZPhone(refundPhone)
-                  }
-                  onClick={sendRefundToWhatsApp}
-                  className="
-                    w-full py-3 rounded-full 
-                    bg-gray-900 text-white font-semibold 
-                    hover:bg-gray-800 transition
-                    disabled:opacity-50 disabled:cursor-not-allowed
-                  "
-                >
-                  Отправить заявку
-                </button>
+                <div className="sticky bottom-0 pt-3">
+                  <button
+                    disabled={
+                      !refundAgree ||
+                      !refundName ||
+                      !refundReason ||
+                      !isValidKZPhone(refundPhone)
+                    }
+                    onClick={sendRefundToWhatsApp}
+                    className="
+                      w-full py-3 rounded-full 
+                      bg-gray-900 text-white font-semibold 
+                      hover:bg-gray-800 transition
+                      disabled:opacity-50 disabled:cursor-not-allowed
+                    "
+                  >
+                    Отправить заявку
+                  </button>
+                </div>
               </div>
             </div>
           </div>
