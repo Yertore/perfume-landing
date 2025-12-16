@@ -220,15 +220,15 @@ export default function PerfumeLanding() {
     setRefundPhoneError("");
 
     const message = `
-  🔁 Заявка на возврат
+                    🔁 Заявка на возврат
 
-  Имя: ${refundName}
-  Телефон: +${cleanPhone}
-  Номер заказа: ${refundOrder || "не указан"}
+                    Имя: ${refundName}
+                    Телефон: +${cleanPhone}
+                    Номер заказа: ${refundOrder || "не указан"}
 
-  Причина возврата:
-  ${refundReason}
-    `;
+                    Причина возврата:
+                    ${refundReason}
+                    `;
 
     const url = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
@@ -588,34 +588,59 @@ export default function PerfumeLanding() {
 
         {modalItem !== null && (
           <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50">
-            <div
-                className="
-                  bg-white
-                  rounded-2xl
-                  w-[95%]
-                  max-w-xl
-                  max-h-[90vh]
-                  overflow-y-auto
-                  p-6
-                  relative
-                  shadow-xl
-                  animate-fadeIn
-                "
-              >
-              <button onClick={() => setModalItem(null)} className="absolute top-3 right-3 w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-600 text-xl">×</button>
+            <div className="bg-white rounded-2xl w-[95%] max-w-xl shadow-xl overflow-hidden relative animate-fadeIn">
 
-              <img src={products[modalItem].img} className="w-full max-h-[380px] object-contain rounded-xl mb-6" />
+              {/* SCROLLABLE CONTENT */}
+              <div className="max-h-[85vh] overflow-y-auto p-6 pb-28">
 
-              <h3 className="text-xl font-semibold mb-2">{products[modalItem].name}</h3>
-              <p className="text-gray-600 text-sm mb-4">Премиальный аромат с нотами бергамота, розы и амбры. Долгое раскрытие, стойкость 10–12 часов. Идеально подходит для особых случаев.</p>
+                {/* CLOSE */}
+                <button
+                  onClick={() => setModalItem(null)}
+                  className="absolute top-3 right-3 w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-600 text-xl"
+                >
+                  ×
+                </button>
 
-              <div className="flex items-center gap-3 mb-4">
-                <span className="px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-medium">Топ ноты: Бергамот</span>
-                <span className="px-3 py-1 rounded-full bg-pink-100 text-pink-700 text-xs font-medium">Сердце: Роза</span>
-                <span className="px-3 py-1 rounded-full bg-purple-100 text-purple-700 text-xs font-medium">База: Амбра</span>
+                {/* IMAGE */}
+                <img
+                  src={products[modalItem].img}
+                  className="w-full max-h-[360px] object-contain rounded-xl mb-6"
+                />
+
+                {/* TITLE */}
+                <h3 className="text-xl font-semibold mb-2">
+                  {products[modalItem].name}
+                </h3>
+
+                {/* DESCRIPTION */}
+                <p className="text-gray-600 text-sm mb-4">
+                  Премиальный аромат с нотами бергамота, розы и амбры.
+                  Долгое раскрытие, стойкость 10–12 часов.
+                  Идеально подходит для особых случаев.
+                </p>
+
+                {/* TAGS */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <span className="px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-medium">
+                    Топ ноты: Бергамот
+                  </span>
+                  <span className="px-3 py-1 rounded-full bg-pink-100 text-pink-700 text-xs font-medium">
+                    Сердце: Роза
+                  </span>
+                  <span className="px-3 py-1 rounded-full bg-purple-100 text-purple-700 text-xs font-medium">
+                    База: Амбра
+                  </span>
+                </div>
+
+                {/* PRICE */}
+                <div className="text-2xl font-bold mb-6">
+                  Цена: {products[modalItem].price} ₸
+                </div>
+
               </div>
-              <div className="text-2xl font-bold mb-4">Цена: {products[modalItem].price} ₸</div>
-              <div className="sticky bottom-0 pt-3">
+
+              {/* FIXED CTA */}
+              <div className="absolute bottom-4 left-4 right-4">
                 <button
                   onClick={() => {
                     setOrderProduct(products[modalItem]);
@@ -624,16 +649,213 @@ export default function PerfumeLanding() {
                   }}
                   className="
                     w-full
-                    py-3 sm:py-4
+                    py-3
                     text-base sm:text-lg
                     rounded-full
                     bg-gradient-to-br from-pink-300 to-amber-200
                     text-gray-900
                     font-semibold
-                    shadow
+                    shadow-xl
                     hover:opacity-90
                     transition
                   "
+                >
+                  Оформить заказ
+                </button>
+              </div>
+
+            </div>
+          </div>
+        )}
+
+
+        {orderProduct && (
+          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50">
+            <div className="bg-white rounded-2xl w-[95%] max-w-md shadow-xl overflow-hidden relative">
+                {/* ВНУТРЕННИЙ СКРОЛЛ */}
+                <div className="max-h-[85vh] overflow-y-auto p-6 pb-28">
+                  {/* Close */}
+                  <button
+                    onClick={() => setOrderProduct(null)}
+                    className="absolute top-3 right-3 w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-600 text-xl"
+                  >
+                    ×
+                  </button>
+
+                  {/* Product */}
+                  <h3 className="text-lg font-semibold mb-2">
+                    {orderProduct.name}
+                  </h3>
+                  {/* КОЛИЧЕСТВО ← ВОТ СЮДА */}
+                  <div className="flex items-center justify-between mt-4">
+                    <span className="text-sm font-medium text-gray-700">
+                      Количество
+                    </span>
+
+                    <div className="flex items-center gap-3">
+                      <button
+                        onClick={() => setOrderQty(q => Math.max(1, q - 1))}
+                        className="w-9 h-9 rounded-full border border-gray-300 text-lg font-semibold hover:bg-gray-100"
+                      >
+                        −
+                      </button>
+
+                      <span className="w-6 text-center font-semibold">
+                        {orderQty}
+                      </span>
+
+                      <button
+                        onClick={() => setOrderQty(q => q + 1)}
+                        className="w-9 h-9 rounded-full border border-gray-300 text-lg font-semibold hover:bg-gray-100"
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
+                  {/* ЦЕНА */}
+                  <div className="mt-4 space-y-1">
+                    <div className="text-sm text-gray-500">
+                      Цена за 1 шт: {orderProduct.price} ₸
+                    </div>
+
+                    <div className="text-xl font-bold">
+                      Итого: {orderProduct.price * orderQty} ₸
+                    </div>
+                  </div>
+
+                  {/* FORM */}
+                  <div className="space-y-4">
+
+                    {/* ИМЯ */}
+                    <input
+                      required
+                      value={customerName}
+                      onChange={(e) => setCustomerName(e.target.value)}
+                      placeholder="Ваше имя"
+                      className="w-full border rounded-lg px-3 py-2"
+                    />
+
+                    {/* ТЕЛЕФОН */}
+                    <input
+                      required
+                      value={customerPhone}
+                      onChange={(e) => {
+
+                        const formatted = formatKZPhone(e.target.value);
+                        setCustomerPhone(formatted);
+
+                        if (!isValidKZPhone(formatted)) {
+                          setPhoneError("Введите корректный номер телефона");
+                        } else {
+                          setPhoneError("");
+                        }
+                      }}
+                      placeholder="+7 (700) 000-00-00"
+                      className="w-full border rounded-lg px-3 py-2"
+                    />
+                    {phoneError && (
+                      <p className="text-xs text-red-600">
+                        {phoneError}
+                      </p>
+                    )}
+
+                    {/* КОММЕНТАРИЙ */}
+                    <textarea
+                      value={comment}
+                      onChange={(e) => setComment(e.target.value)}
+                      placeholder="Комментарий к заказу (необязательно)"
+                      className="w-full border rounded-lg px-3 py-2 h-20"
+                    />
+
+                    {/* AGREEMENT */}
+                    <label className="text-xs text-gray-500 flex gap-2">
+                      <input
+                        type="checkbox"
+                        checked={agree}
+                        onChange={(e) => setAgree(e.target.checked)}
+                      />
+                      Я соглашаюсь с
+                      <a href="#privacy" className="underline">
+                        политикой конфиденциальности
+                      </a>
+                    </label>
+
+                    {/* ДОСТАВКА */}
+                    <div className="mt-4 space-y-3">
+                      <h4 className="font-semibold text-gray-900">
+                        Способ доставки
+                      </h4>
+
+                      <label className="flex items-center gap-3 cursor-pointer">
+                        <input
+                          type="radio"
+                          name="delivery"
+                          checked={deliveryType === "pickup"}
+                          onChange={() => setDeliveryType("pickup")}
+                        />
+                        <span className="text-sm">Самовывоз (Алматы)</span>
+                      </label>
+
+                      <label className="flex items-center gap-3 cursor-pointer">
+                        <input
+                          type="radio"
+                          name="delivery"
+                          checked={deliveryType === "courier"}
+                          onChange={() => setDeliveryType("courier")}
+                        />
+                        <span className="text-sm">Курьером</span>
+                      </label>
+
+                      {deliveryType === "courier" && (
+                        <input
+                          value={address}
+                          onChange={(e) => setAddress(e.target.value)}
+                          placeholder="Введите адрес доставки"
+                          className="w-full mt-2 px-4 py-2 rounded-lg border border-gray-300"
+                        />
+                      )}
+                    </div>
+
+                    <div className="mt-4 text-center space-y-2">
+                      <p className="text-sm text-gray-600">
+                        Оплата через <b>Kaspi Pay</b>
+                      </p>
+
+                      <img
+                        src={kaspiQR}
+                        alt="Kaspi QR"
+                        className="mx-auto w-40 rounded-xl shadow"
+                      />
+
+                      <p className="text-xs text-gray-500">
+                        Отсканируйте QR в приложении Kaspi
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              {/* FIXED BUTTON */}
+              <div className="absolute bottom-4 left-4 right-4">
+                <button
+                  disabled={
+                    !agree ||
+                    !customerName ||
+                    !customerPhone ||
+                    !isValidKZPhone(customerPhone)
+                  }
+                  onClick={sendToWhatsApp}
+                  className="
+                            w-full
+                            py-3
+                            text-base
+                            rounded-full
+                            bg-gradient-to-br from-pink-300 to-amber-200
+                            text-gray-900
+                            font-semibold
+                            shadow-xl
+                            hover:opacity-90
+                            transition
+                            disabled:opacity-50
+                          "
                 >
                   Оформить заказ
                 </button>
@@ -642,326 +864,134 @@ export default function PerfumeLanding() {
           </div>
         )}
 
-        {orderProduct && (
-          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50">
-            <div className="
-                          bg-white 
-                          rounded-2xl 
-                          w-[95%] 
-                          max-w-md 
-                          max-h-[90vh] 
-                          overflow-y-auto 
-                          p-6 
-                          relative 
-                          shadow-xl
-                        ">
-
-              {/* Close */}
-              <button
-                onClick={() => setOrderProduct(null)}
-                className="absolute top-3 right-3 w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-600 text-xl"
-              >
-                ×
-              </button>
-
-              {/* Product */}
-              <h3 className="text-lg font-semibold mb-2">
-                {orderProduct.name}
-              </h3>
-              {/* КОЛИЧЕСТВО ← ВОТ СЮДА */}
-              <div className="flex items-center justify-between mt-4">
-                <span className="text-sm font-medium text-gray-700">
-                  Количество
-                </span>
-
-                <div className="flex items-center gap-3">
-                  <button
-                    onClick={() => setOrderQty(q => Math.max(1, q - 1))}
-                    className="w-9 h-9 rounded-full border border-gray-300 text-lg font-semibold hover:bg-gray-100"
-                  >
-                    −
-                  </button>
-
-                  <span className="w-6 text-center font-semibold">
-                    {orderQty}
-                  </span>
-
-                  <button
-                    onClick={() => setOrderQty(q => q + 1)}
-                    className="w-9 h-9 rounded-full border border-gray-300 text-lg font-semibold hover:bg-gray-100"
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
-              {/* ЦЕНА */}
-              <div className="mt-4 space-y-1">
-                <div className="text-sm text-gray-500">
-                  Цена за 1 шт: {orderProduct.price} ₸
-                </div>
-
-                <div className="text-xl font-bold">
-                  Итого: {orderProduct.price * orderQty} ₸
-                </div>
-              </div>
-
-              {/* FORM */}
-              <div className="space-y-4">
-
-                {/* ИМЯ */}
-                <input
-                  required
-                  value={customerName}
-                  onChange={(e) => setCustomerName(e.target.value)}
-                  placeholder="Ваше имя"
-                  className="w-full border rounded-lg px-3 py-2"
-                />
-
-                {/* ТЕЛЕФОН */}
-                <input
-                  required
-                  value={customerPhone}
-                  onChange={(e) => {
-
-                    const formatted = formatKZPhone(e.target.value);
-                    setCustomerPhone(formatted);
-
-                    if (!isValidKZPhone(formatted)) {
-                      setPhoneError("Введите корректный номер телефона");
-                    } else {
-                      setPhoneError("");
-                    }
-                  }}
-                  placeholder="+7 (700) 000-00-00"
-                  className="w-full border rounded-lg px-3 py-2"
-                />
-                {phoneError && (
-                  <p className="text-xs text-red-600">
-                    {phoneError}
-                  </p>
-                )}
-
-                {/* КОММЕНТАРИЙ */}
-                <textarea
-                  value={comment}
-                  onChange={(e) => setComment(e.target.value)}
-                  placeholder="Комментарий к заказу (необязательно)"
-                  className="w-full border rounded-lg px-3 py-2 h-20"
-                />
-
-                {/* AGREEMENT */}
-                <label className="text-xs text-gray-500 flex gap-2">
-                  <input
-                    type="checkbox"
-                    checked={agree}
-                    onChange={(e) => setAgree(e.target.checked)}
-                  />
-                  Я соглашаюсь с
-                  <a href="#privacy" className="underline">
-                    политикой конфиденциальности
-                  </a>
-                </label>
-
-                {/* ДОСТАВКА */}
-                <div className="mt-4 space-y-3">
-                  <h4 className="font-semibold text-gray-900">
-                    Способ доставки
-                  </h4>
-
-                  <label className="flex items-center gap-3 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="delivery"
-                      checked={deliveryType === "pickup"}
-                      onChange={() => setDeliveryType("pickup")}
-                    />
-                    <span className="text-sm">Самовывоз (Алматы)</span>
-                  </label>
-
-                  <label className="flex items-center gap-3 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="delivery"
-                      checked={deliveryType === "courier"}
-                      onChange={() => setDeliveryType("courier")}
-                    />
-                    <span className="text-sm">Курьером</span>
-                  </label>
-
-                  {deliveryType === "courier" && (
-                    <input
-                      value={address}
-                      onChange={(e) => setAddress(e.target.value)}
-                      placeholder="Введите адрес доставки"
-                      className="w-full mt-2 px-4 py-2 rounded-lg border border-gray-300"
-                    />
-                  )}
-                </div>
-
-                <div className="mt-4 text-center space-y-2">
-                  <p className="text-sm text-gray-600">
-                    Оплата через <b>Kaspi Pay</b>
-                  </p>
-
-                  <img
-                    src={kaspiQR}
-                    alt="Kaspi QR"
-                    className="mx-auto w-40 rounded-xl shadow"
-                  />
-
-                  <p className="text-xs text-gray-500">
-                    Отсканируйте QR в приложении Kaspi
-                  </p>
-                </div>
-
-                {/* КНОПКА */}
-                <div className="sticky bottom-0 pt-3">
-                  <button
-                    disabled={
-                      !agree || 
-                      !customerName || 
-                      !customerPhone || 
-                      !isValidKZPhone(customerPhone)
-                    }
-                    onClick={sendToWhatsApp}
-                    className="
-                      w-full
-                      py-3 sm:py-4
-                      text-base sm:text-lg
-                      rounded-full
-                      bg-gradient-to-br from-pink-300 to-amber-200
-                      text-gray-900
-                      font-semibold
-                      shadow
-                      hover:opacity-90
-                      transition
-                    "
-                  >
-                    Оформить заказ
-                  </button>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        )}
-
         {refundOpen && (
           <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50">
-            <div className="
-                          bg-white 
-                          rounded-2xl 
-                          w-[95%] 
-                          max-w-md 
-                          max-h-[90vh] 
-                          overflow-y-auto 
-                          p-6 
-                          relative 
-                          shadow-xl
-                        ">
+            <div className="bg-white rounded-2xl w-[95%] max-w-md shadow-xl overflow-hidden relative">
 
-              {/* CLOSE */}
-              <button
-                onClick={() => setRefundOpen(false)}
-                className="absolute top-3 right-3 w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-600 text-xl"
-              >
-                ×
-              </button>
+              {/* ВНУТРЕННИЙ СКРОЛЛ */}
+              <div className="max-h-[85vh] overflow-y-auto p-6 pb-28">
 
-              <h3 className="text-lg font-semibold mb-2">
-                Возврат товара
-              </h3>
+                {/* CLOSE */}
+                <button
+                  onClick={() => setRefundOpen(false)}
+                  className="absolute top-3 right-3 w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-600 text-xl"
+                >
+                  ×
+                </button>
 
-              <p className="text-sm text-gray-500 mb-4">
-                Заполните форму — мы свяжемся с вами для оформления возврата
-              </p>
+                <h3 className="text-lg font-semibold mb-2">
+                  Возврат товара
+                </h3>
 
-              <div className="space-y-4">
-                <input
-                  value={refundName}
-                  onChange={(e) => setRefundName(e.target.value)}
-                  placeholder="Ваше имя"
-                  className="w-full border rounded-lg px-3 py-2"
-                />
+                <p className="text-sm text-gray-500 mb-4">
+                  Заполните форму — мы свяжемся с вами для оформления возврата
+                </p>
 
-                <input
-                  value={refundPhone}
-                  onChange={(e) => {
-                    const formatted = formatKZPhone(e.target.value);
-                    setRefundPhone(formatted);
+                <div className="space-y-4">
 
-                    if (!isValidKZPhone(formatted)) {
-                      setRefundPhoneError("Введите корректный номер телефона");
-                    } else {
-                      setRefundPhoneError("");
-                    }
-                  }}
-                  placeholder="+7 (700) 000-00-00"
-                  className="w-full border rounded-lg px-3 py-2"
-                />
-                {refundPhoneError && (
-                  <p className="text-xs text-red-600">{refundPhoneError}</p>
-                )}
+                  {/* ИМЯ */}
+                  <input
+                    value={refundName}
+                    onChange={(e) => setRefundName(e.target.value)}
+                    placeholder="Ваше имя"
+                    className="w-full border rounded-lg px-3 py-2"
+                  />
 
-                <input
-                  value={refundOrder}
-                  onChange={(e) => setRefundOrder(e.target.value)}
-                  placeholder="Номер заказа (необязательно)"
-                  className="w-full border rounded-lg px-3 py-2"
-                />
+                  {/* ТЕЛЕФОН */}
+                  <input
+                    value={refundPhone}
+                    onChange={(e) => {
+                      const formatted = formatKZPhone(e.target.value);
+                      setRefundPhone(formatted);
 
-                <textarea
-                  value={refundReason}
-                  onChange={(e) => setRefundReason(e.target.value)}
-                  placeholder="Причина возврата"
-                  className="w-full border rounded-lg px-3 py-2 h-28"
-                />
-                {/* INFO NOTE */}
-                <div className="mt-4 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-gray-800 space-y-2">
-                  <div className="font-semibold flex items-center gap-2">
-                    🔁 Возврат
+                      if (!isValidKZPhone(formatted)) {
+                        setRefundPhoneError("Введите корректный номер телефона");
+                      } else {
+                        setRefundPhoneError("");
+                      }
+                    }}
+                    placeholder="+7 (700) 000-00-00"
+                    className="w-full border rounded-lg px-3 py-2"
+                  />
+                  {refundPhoneError && (
+                    <p className="text-xs text-red-600">
+                      {refundPhoneError}
+                    </p>
+                  )}
+
+                  {/* НОМЕР ЗАКАЗА */}
+                  <input
+                    value={refundOrder}
+                    onChange={(e) => setRefundOrder(e.target.value)}
+                    placeholder="Номер заказа (необязательно)"
+                    className="w-full border rounded-lg px-3 py-2"
+                  />
+
+                  {/* ПРИЧИНА */}
+                  <textarea
+                    value={refundReason}
+                    onChange={(e) => setRefundReason(e.target.value)}
+                    placeholder="Причина возврата"
+                    className="w-full border rounded-lg px-3 py-2 h-28"
+                  />
+
+                  {/* INFO NOTE */}
+                  <div className="mt-2 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-gray-800 space-y-2">
+                    <div className="font-semibold flex items-center gap-2">
+                      🔁 Возврат
+                    </div>
+
+                    <p>
+                      Возврат возможен в течение <b>14 дней</b> с момента получения,
+                      при сохранении упаковки и товарного вида.
+                    </p>
                   </div>
 
-                  <p>
-                    Возврат возможен в течение <b>14 дней</b> с момента получения,
-                    при сохранении упаковки и товарного вида.
-                  </p>
-                </div>
+                  {/* AGREEMENT */}
+                  <label className="text-xs text-gray-500 flex gap-2">
+                    <input
+                      type="checkbox"
+                      checked={refundAgree}
+                      onChange={(e) => setRefundAgree(e.target.checked)}
+                    />
+                    Я соглашаюсь с
+                    <a href="#privacy" className="underline">
+                      политикой конфиденциальности
+                    </a>
+                  </label>
 
-
-                {/* AGREEMENT */}
-                <label className="text-xs text-gray-500 flex gap-2">
-                  <input
-                    type="checkbox"
-                    checked={refundAgree}
-                    onChange={(e) => setRefundAgree(e.target.checked)}
-                  />
-                  Я соглашаюсь с
-                  <a href="#privacy" className="underline">
-                    политикой конфиденциальности
-                  </a>
-                </label>
-
-                <div className="sticky bottom-0 pt-3">
-                  <button
-                    disabled={
-                      !refundAgree ||
-                      !refundName ||
-                      !refundReason ||
-                      !isValidKZPhone(refundPhone)
-                    }
-                    onClick={sendRefundToWhatsApp}
-                    className="
-                      w-full py-3 rounded-full 
-                      bg-gray-900 text-white font-semibold 
-                      hover:bg-gray-800 transition
-                      disabled:opacity-50 disabled:cursor-not-allowed
-                    "
-                  >
-                    Отправить заявку
-                  </button>
                 </div>
               </div>
+
+              {/* FIXED BUTTON */}
+              <div className="absolute bottom-4 left-4 right-4">
+                <button
+                  disabled={
+                    !refundAgree ||
+                    !refundName ||
+                    !refundReason ||
+                    !isValidKZPhone(refundPhone)
+                  }
+                  onClick={sendRefundToWhatsApp}
+                  className="
+                    w-full
+                    py-3
+                    text-base
+                    rounded-full
+                    bg-gray-900
+                    text-white
+                    font-semibold
+                    shadow-xl
+                    hover:bg-gray-800
+                    transition
+                    disabled:opacity-50
+                    disabled:pointer-events-none
+                  "
+                >
+                  Отправить заявку
+                </button>
+              </div>
+
             </div>
           </div>
         )}
@@ -1093,59 +1123,79 @@ export default function PerfumeLanding() {
       </section>
 
       {/* CONTACT */}
-      <section id="contact" className="bg-gray-900 text-white py-16">
-        <div className="max-w-4xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div>
-            <h3 className="text-2xl font-bold">Свяжитесь с нами</h3>
-            <p className="text-gray-300 mt-3">Оставьте заявку — мы ответим в течение рабочего дня.</p>
+      <section id="contact" className="bg-gray-900 text-white py-12">
+        <div className="max-w-4xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
 
-            <div className="mt-6 space-y-4">
+          {/* LEFT */}
+          <div>
+            <h3 className="text-xl font-bold">Свяжитесь с нами</h3>
+            <p className="text-gray-300 mt-2 text-sm">
+              Оставьте заявку — мы ответим в течение рабочего дня.
+            </p>
+
+            <div className="mt-5 space-y-3 text-sm">
               <div className="flex gap-3 items-center">
-                <svg className="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7-5 7 5v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z" /></svg>
-                <div>
-                  <div className="font-semibold">bekir.zehay@gmail.com</div>
-                  <div className="text-xs text-gray-400">Почта для вопросов</div>
-                </div>
+                <svg className="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                    d="M3 8l7-5 7 5v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z" />
+                </svg>
+                <span className="text-gray-200">bekir.zehay@gmail.com</span>
               </div>
 
               <div className="flex gap-3 items-center">
-                <svg className="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5h12M9 3v2m6 4l4 4-4 4" /></svg>
-                <div>
-                  <div className="font-semibold">+7 (707) 255-79-63</div>
-                  <div className="text-xs text-gray-400">Рабочие часы: 10:00 — 19:00</div>
-                </div>
+                <svg className="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                    d="M3 5h12M9 3v2m6 4l4 4-4 4" />
+                </svg>
+                <span className="text-gray-200">
+                  +7 (707) 255-79-63
+                </span>
               </div>
             </div>
           </div>
 
-          <form className="bg-white/5 rounded-xl p-6 space-y-4">
-            <label className="block text-sm">
-              <span className="text-xs text-gray-300">Имя</span>
-              <input className="mt-1 block w-full rounded-md bg-white/10 border border-white/10 placeholder-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400" placeholder="Ваше имя" />
-            </label>
+          {/* RIGHT FORM */}
+          <form className="bg-white/5 rounded-xl p-5 space-y-3">
 
-            <label className="block text-sm">
-              <span className="text-xs text-gray-300">Телефон или почта</span>
-              <input className="mt-1 block w-full rounded-md bg-white/10 border border-white/10 placeholder-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400" placeholder="+7 (700) 000-00-00 или email" />
-            </label>
+            <input
+              className="w-full rounded-md bg-white/10 border border-white/10 
+              placeholder-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+              placeholder="Ваше имя"
+            />
 
-            <label className="block text-sm">
-              <span className="text-xs text-gray-300">Сообщение</span>
-              <textarea className="mt-1 block w-full rounded-md bg-white/10 border border-white/10 placeholder-gray-300 px-3 py-2 h-24 focus:outline-none focus:ring-2 focus:ring-amber-400" placeholder="Я хочу узнать..." />
-            </label>
+            <input
+              className="w-full rounded-md bg-white/10 border border-white/10 
+              placeholder-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+              placeholder="+7 (700) 000-00-00 или email"
+            />
 
-            <div className="flex justify-end">
-              <button type="button" className="px-5 py-2 rounded-full bg-amber-400 text-gray-900 font-semibold">Отправить</button>
-            </div>
-            <p className="text-xs text-gray-400 mt-3">
+            <textarea
+              className="w-full rounded-md bg-white/10 border border-white/10 
+              placeholder-gray-300 px-3 py-2 h-20 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+              placeholder="Сообщение"
+            />
+
+            <button
+              type="button"
+              className="mt-2 px-5 py-2 rounded-full bg-amber-400 text-gray-900 text-sm font-semibold hover:opacity-90"
+            >
+              Отправить
+            </button>
+
+            <p className="text-[11px] text-gray-400 mt-2">
               Нажимая кнопку «Отправить», вы соглашаетесь с
-              <a href="#privacy" className="underline ml-1">
+              <button
+                type="button"
+                onClick={() => setPrivacyOpen(true)}
+                className="underline ml-1"
+              >
                 политикой конфиденциальности
-              </a>
+              </button>
             </p>
           </form>
         </div>
       </section>
+
 
       {/* FOOTER */}
       <footer className="bg-white py-8">
@@ -1158,7 +1208,7 @@ export default function PerfumeLanding() {
             <div className="flex items-center gap-4">
               <button
                 onClick={() => setRefundOpen(true)}
-                className="font-semibold text-amber-600 hover:text-amber-700"
+                className="font-medium text-gray-800 hover:text-gray-900 transition"
               >
                 Возврат товара
               </button>
