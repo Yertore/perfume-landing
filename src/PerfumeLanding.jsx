@@ -1,24 +1,25 @@
 import React, { useState, useEffect } from "react";
-import CHANEL_Allure from './images/chanel_allure.jpg';
-import CHANEL_Chance_Eau_Tendre from './images/chanel_chance.jpg';
-import CHANEL_Coco_Mademoiselle from './images/chanel_coco_mademoiselle.jpg';
-import CHANEL_Coco_NOIR from './images/chanel_coco_noir.jpeg';
-import Dior_Addict from './images/dior_addict.jpg';
-import Dior_JAdore from './images/dior_jadore.jpg';
-import Dior_Miss_Dior from './images/dior_miss_dior.jpg';
-import Dior_Pure_Poison from './images/dior_pure_poison.jpg';
-import Giorgio_Armani_Diamonds from './images/giorgio_armani_diamonds.jpg';
-import Giorgio_Armani_Idole_DArmani from './images/giorgio_armani_idole.jpg';
-import Giorgio_Armani_My_Way from './images/giorgio_armani_my_way.jpeg';
-import Giorgio_Armani_Si_Passion_Eclat from './images/giorgio_armani_si_passion_eclat.jpg';
-import GIVENCHY_Ange_Ou_Demon from './images/givenchy_ange_ou_demon.jpg';
-import GIVENCHY_Irresistible from './images/givenchy_irresistible.jpg';
-import GIVENCHY_LInterdit_Rouge from './images/givenchy_linterdit_rouge.jpg';
-import GIVENCHY_LInterdit from './images/givenchy_linterdit.jpg';
-import TOM_FORD_Velvet_Orchid from './images/tom_ford_velvet_orchid.jpg';
-import Yves_Saint_Laurent_Black_Opium from './images/yves_saint_laurent_black_opium.jpg';
-import Yves_Saint_Laurent_LIBRE_ABSOLU_PLATINE from './images/yves_saint_laurent_libre.jpg';
-import Yves_Saint_Laurent_Mon_Paris from './images/yves_saint_laurent_mon_paris.jpeg';
+
+import img1 from "./images/products/1.jpeg";
+import img2 from "./images/products/2.jpeg";
+import img3 from "./images/products/3.jpeg";
+import img4 from "./images/products/4.jpeg";
+import img5 from "./images/products/5.jpeg";
+import img6 from "./images/products/6.jpeg";
+import img7 from "./images/products/7.jpeg";
+import img8 from "./images/products/8.jpeg";
+import img9 from "./images/products/9.jpeg";
+import img10 from "./images/products/10.jpeg";
+import img11 from "./images/products/11.jpeg";
+import img12 from "./images/products/12.jpeg";
+import img13 from "./images/products/13.jpeg";
+import img14 from "./images/products/14.jpeg";
+import img15 from "./images/products/15.jpeg";
+import img16 from "./images/products/16.jpeg";
+import img17 from "./images/products/17.jpeg";
+import img18 from "./images/products/18.jpeg";
+import img19 from "./images/products/19.jpeg";
+
 import kaspiQR from "./images/kaspi-qr.png";
 
 import C1 from './images/carousel/1.jpg';
@@ -144,28 +145,26 @@ export default function PerfumeLanding() {
     };
   }, [modalItem, orderProduct, refundOpen]);
 
-
   const products = [
-    { id: 1, img: CHANEL_Allure, name: "CHANEL Allure", price: 40000, top: false },
-    { id: 2, img: CHANEL_Chance_Eau_Tendre, name: "CHANEL Chance Eau Tendre", price: 25400, top: false },
-    { id: 3, img: CHANEL_Coco_Mademoiselle, name: "CHANEL Coco Mademoiselle", price: 32100, top: false },
-    { id: 4, img: CHANEL_Coco_NOIR, name: "CHANEL Coco NOIR", price: 45000, top: false },
-    { id: 5, img: Dior_Addict, name: "Dior Addict", price: 18900, top: false },
-    { id: 6, img: Dior_JAdore, name: "Dior J'Adore", price: 29900, top: true },
-    { id: 7, img: Dior_Miss_Dior, name: "Dior Miss Dior", price: 22500, top: false },
-    { id: 8, img: Dior_Pure_Poison, name: "Dior Pure Poison", price: 17300, top: true },
-    { id: 9, img: Giorgio_Armani_Diamonds, name: "Giorgio Armani Diamonds", price: 14700, top: false },
-    { id: 10, img: Giorgio_Armani_Idole_DArmani, name: "Giorgio Armani Idole D'Armani", price: 11200, top: false },
-    { id: 11, img: Giorgio_Armani_My_Way, name: "Giorgio Armani My Way", price: 24600, top: true },
-    { id: 12, img: Giorgio_Armani_Si_Passion_Eclat, name: "Giorgio Armani Si Passion Eclat", price: 19800, top: false },
-    { id: 13, img: GIVENCHY_Ange_Ou_Demon, name: "GIVENCHY Ange Ou Demon", price: 16400, top: false },
-    { id: 14, img: GIVENCHY_Irresistible, name: "GIVENCHY Irresistible", price: 21000, top: false },
-    { id: 15, img: GIVENCHY_LInterdit_Rouge, name: "GIVENCHY L'Interdit Rouge", price: 28700, top: false },
-    { id: 16, img: GIVENCHY_LInterdit, name: "GIVENCHY L'Interdit", price: 23300, top: false },
-    { id: 17, img: TOM_FORD_Velvet_Orchid, name: "TOM FORD Velvet Orchid", price: 55500, top: false },
-    { id: 18, img: Yves_Saint_Laurent_Black_Opium, name: "Yves Saint Laurent Black Opium", price: 31800, top: false },
-    { id: 19, img: Yves_Saint_Laurent_LIBRE_ABSOLU_PLATINE, name: "Yves Saint Laurent LIBRE ABSOLU PLATINE", price: 38900, top: false },
-    { id: 20, img: Yves_Saint_Laurent_Mon_Paris, name: "Yves Saint Laurent Mon Paris", price: 27100, top: false }
+    { id: 1, img: img1, name: "ШАМПУНЬ С ЧЕСНОКОМ VATIKA NATURALS SPANISH GARLIC", price: 5727, top: false },
+    { id: 2, img: img2, name: "ШАМПУНЬ С ЧЕРНЫМ ТМИНОМ 2% VATIKA NATURALS TURKISH BLACK SEED", price: 5727, top: false },
+    { id: 3, img: img3, name: "ШАМПУНЬ С ИСПАНСКОЙ ОЛИВОЙ VATIKA SPANISH OLIVE", price: 1909, top: false },
+    { id: 4, img: img4, name: "КОНДИЦИОНЕР ОБЪЕМ И ГУСТОТА ВОЛОС DABUR VATIKA NATURALS VOLUME & THICKNESS", price: 2262, top: false },
+    { id: 5, img: img5, name: "КОНДИЦИОНЕР КОНТРОЛЬ НАД ПОТЕРЕЙ ВОЛОС DABUR VATIKA NATURALS HAIR FALL CONTROL", price: 2262, top: false },
+    { id: 6, img: img6, name: "КОНДИЦИОНЕР С ЧЕСНОКОМ DABUR VATIKA GARLIC", price: 2262, top: true },
+    { id: 7, img: img7, name: "КОНДИЦИОНЕР С ЧЕРНЫМ ТМИНОМ DABUR VATIKA BLACK SEED 400МЛ", price: 2262, top: false },
+    { id: 8, img: img8, name: "ШАМПУНЬ ДЕТСКИЙ НА ОСНОВЕ ОЛИВКОВОГО МАСЛА DERMOVIVA 500 МЛ", price: 3214, top: true },
+    { id: 9, img: img9, name: "ШАМПУНЬ ПРОТИВ ПЕРХОТИ VATIKA NATURALS DANDRUFF GUARD 600 МЛ", price: 3214, top: false },
+    { id: 10, img: img10, name: "ШАМПУНЬ С ЧЁРНЫМ ТМИНОМ VATIKA NATURALS TURKISH BLACK SEED 600 МЛ", price: 3214, top: false },
+    { id: 11, img: img11, name: "ШАМПУНЬ УВЛАЖНЕНИЕ VATIKA NATURALS MOISTURE TREATMENT", price: 3214, top: true },
+    { id: 12, img: img12, name: "ХНА ДЛЯ ВОЛОС VATIKA HENNA HAIR COLOURS- NATURAL BROWN", price: 2712, top: false },
+    { id: 13, img: img13, name: "ХНА ДЛЯ ВОЛОС VATIKA HENNA HAIR COLOURS NATURAL BLACK", price: 5425, top: false },
+    { id: 14, img: img14, name: "ХНА ДЛЯ ВОЛОС VATIKA HENNA HAIR COLOURS - DARK BROWN", price: 5425, top: false },
+    { id: 15, img: img15, name: "ЗУБНАЯ ПАСТА С МИСВАКОМ DABUR MISWAK HERBAL 50Г+25Г", price: 6171, top: false },
+    { id: 16, img: img16, name: "ЗУБНАЯ ПАСТА С МИСВАКОМ DABUR MISWAK HERBAL 120Г+50Г", price: 22062, top: false },
+    { id: 17, img: img17, name: "ЗУБНАЯ ПАСТА С МИСВАКОМ DABUR MISWAK GOLD 120Г+50 Г", price: 11417, top: false },
+    { id: 18, img: img18, name: "ШАМПУНЬ С ХНОЙ VATIKA HENNA", price: 1909, top: false },
+    { id: 19, img: img19, name: "ШАМПУНЬ КОНТРОЛЬ НАД ПОТЕРЕЙ ВОЛОС VATIKA NATURALS HAIR FALL CONTROL", price: 1909, top: false },
   ];
 
   const sendToWhatsApp = () => {
@@ -334,7 +333,7 @@ export default function PerfumeLanding() {
         </div>
       </header>
       {menuOpen && (
-        <div className="fixed top-0 left-0 right-0 z-[99999] bg-white shadow-md rounded-b-2xl">
+        <div className="fixed top-0 left-0 right-0 z-[50] bg-white shadow-md rounded-b-2xl">
 
           {/* MENU WRAPPER */}
           <div className="p-4 flex flex-col gap-2 animate-menu">
@@ -441,45 +440,37 @@ export default function PerfumeLanding() {
         </h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
-          {[
-            {
-              name: products[0].name,
-              img: products[0].img
-            },
-            {
-              name: products[1].name,
-              img: products[1].img
-            },
-            {
-              name: products[2].name,
-              img: products[2].img
-            }
-          ].map((item, i) => (
+          {products.slice(0, 3).map((product, i) => (
             <div
-              key={i}
-              onClick={() => setModalItem(i)}
+              key={product.id}
+              onClick={() => setModalItem(product)}
               className="cursor-pointer group relative rounded-3xl overflow-hidden shadow-lg flex items-center justify-center"
             >
               <img
-                src={item.img}
+                src={product.img}
                 className="
-            w-auto 
-            h-56        /* mobile */
-            sm:h-64     /* tablets 640+ */
-            md:h-72     /* 768+ */
-            lg:h-80     /* 1024+ */
-            object-contain 
-            transition-all duration-700 group-hover:scale-110
-          "
+                            w-auto 
+                            h-56        /* mobile */
+                            sm:h-64     /* tablets 640+ */
+                            md:h-72     /* 768+ */
+                            lg:h-80     /* 1024+ */
+                            object-contain 
+                            transition-all duration-700 group-hover:scale-110
+                          "
               />
 
               <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/70 to-transparent text-white flex items-end justify-center">
-                <h4 className=" text-lg        /* mobile */
-                          sm:text-xl     /* tablets 640+ */
-                          md:text-2xl    /* 768+ */
-                          lg:text-3xl    /* 1024+ */
-                          font-bold tracking-tight drop-shadow-lg" >
-                  {item.name}
+                <h4 className="
+                              text-sm
+                              sm:text-base
+                              md:text-lg
+                              font-semibold
+                              leading-tight
+                              text-center
+                              line-clamp-2
+                              drop-shadow-md
+                            " >
+                  {product.name}
                 </h4>
               </div>
             </div>
@@ -501,10 +492,10 @@ export default function PerfumeLanding() {
                         xl:grid-cols-5 
                         gap-8
                       ">
-          {Array.from({ length: 20 }).slice(0, showAll ? 20 : 10).map((_, i) => (
+          {products.filter(Boolean).slice(0, showAll ? products.length : 10).map((product, i) => (
             <article
-              key={i}
-              onClick={() => setModalItem(i)}
+              key={product.id}
+              onClick={() => setModalItem(product)}
               className="
                 bg-white rounded-2xl 
                 p-3 sm:p-4 md:p-4 
@@ -521,8 +512,8 @@ export default function PerfumeLanding() {
                   bg-white flex items-center justify-center
               ">
                 <img
-                  alt={`product-${i}`}
-                  src={products[i].img}
+                  alt={product?.name || "product"}
+                  src={product?.img}
                   className="
                     max-h-32 sm:max-h-36 md:max-h-40 lg:max-h-48 
                     w-auto object-contain
@@ -532,7 +523,7 @@ export default function PerfumeLanding() {
 
               {/* TITLE */}
               <h4 className="font-semibold text-xs sm:text-sm md:text-base text-center">
-                {products[i].name}
+                {product.name}
               </h4>
 
               {/* SUBTEXT */}
@@ -551,13 +542,13 @@ export default function PerfumeLanding() {
                 gap-2
               ">
                 <div className="text-sm sm:text-base md:text-lg font-bold text-center w-full sm:w-auto">
-                  {products[i].price} ₸
+                  {product.price} ₸
                 </div>
 
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
-                    setOrderProduct(products[i]);
+                    setOrderProduct(product);
                   }}
                   className="
                             text-[10px] sm:text-xs md:text-sm 
@@ -586,7 +577,7 @@ export default function PerfumeLanding() {
         </div>
 
 
-        {modalItem !== null && (
+        {modalItem && modalItem.img && (
           <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50">
             <div className="bg-white rounded-2xl w-[95%] max-w-xl shadow-xl overflow-hidden relative animate-fadeIn">
 
@@ -603,13 +594,13 @@ export default function PerfumeLanding() {
 
                 {/* IMAGE */}
                 <img
-                  src={products[modalItem].img}
+                  src={modalItem.img}
                   className="w-full max-h-[360px] object-contain rounded-xl mb-6"
                 />
 
                 {/* TITLE */}
                 <h3 className="text-xl font-semibold mb-2">
-                  {products[modalItem].name}
+                  {modalItem.name}
                 </h3>
 
                 {/* DESCRIPTION */}
@@ -634,7 +625,7 @@ export default function PerfumeLanding() {
 
                 {/* PRICE */}
                 <div className="text-2xl font-bold mb-6">
-                  Цена: {products[modalItem].price} ₸
+                  Цена: {modalItem.price} ₸
                 </div>
 
               </div>
@@ -643,7 +634,7 @@ export default function PerfumeLanding() {
               <div className="absolute bottom-4 left-4 right-4">
                 <button
                   onClick={() => {
-                    setOrderProduct(products[modalItem]);
+                    setOrderProduct(modalItem);
                     setOrderQty(1);
                     setModalItem(null);
                   }}
