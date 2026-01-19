@@ -210,7 +210,7 @@ ${refundReason}
           title: `Заказ: ${orderProduct.name}`,
           description: `Оплата заказа на beautycosmetics.kz`,
           external_data: JSON.stringify(externalDataObj),
-          external_order_id: Date.now(), // временно; в идеале сервер генерит сам
+          external_order_id: Math.floor(100000000 + Math.random() * 900000000),
           external_client_id: null,
         }),
       });
